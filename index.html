@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git 常用配置速查表</title>
+    <style>
+        /* 全局样式重置与基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* 容器样式 */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        /* 命令列表样式 */
+        .command-list {
+            list-style: none;
+        }
+
+        .command-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .command-code {
+            display: block;
+            background: #2d3748;
+            color: #e6e6e6;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            margin: 0.8rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+
+        .command-desc {
+            color: #495057;
+            font-size: 0.95rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .command-code {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Git 常用配置速查表</h1>
+        <p>新手友好 · 即查即用 · 简洁清晰</p>
+    </header>
+
+    <div class="container">
+        <!-- 基础身份配置卡片 -->
+        <div class="card">
+            <h2>基础身份配置</h2>
+            <ul class="command-list">
+                <li class="command-item">
+                    <strong>全局用户名配置</strong>
+                    <code class="command-code">git config --global user.name "你的用户名"</code>
+                    <p class="command-desc">设置所有 Git 仓库的提交者用户名，只需配置一次</p>
+                </li>
+                <li class="command-item">
+                    <strong>全局邮箱配置</strong>
+                    <code class="command-code">git config --global user.email "你的邮箱@example.com"</code>
+                    <p class="command-desc">设置所有 Git 仓库的提交者邮箱，与 Git 平台（如GitHub）邮箱一致更佳</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 配置查看/修改卡片 -->
+        <div class="card">
+            <h2>配置查看与修改</h2>
+            <ul class="command-list">
+                <li class="command-item">
+                    <strong>查看全局配置</strong>
+                    <code class="command-code">git config --global --list</code>
+                    <p class="command-desc">列出所有全局配置项，验证用户名/邮箱是否设置成功</p>
+                </li>
+                <li class="command-item">
+                    <strong>单个仓库配置身份</strong>
+                    <code class="command-code">git config user.name "专属用户名"</code>
+                    <p class="command-desc">去掉 --global，仅为当前仓库设置独立的提交身份（适用于多账号场景）</p>
+                </li>
+                <li class="command-item">
+                    <strong>修改默认编辑器</strong>
+                    <code class="command-code">git config --global core.editor "notepad++"</code>
+                    <p class="command-desc">将 Git 默认编辑器改为 Notepad++（也可替换为 vscode、vim 等）</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 实用配置卡片 -->
+        <div class="card">
+            <h2>实用优化配置</h2>
+            <ul class="command-list">
+                <li class="command-item">
+                    <strong>设置彩色输出</strong>
+                    <code class="command-code">git config --global color.ui auto</code>
+                    <p class="command-desc">让 Git 命令输出带颜色，更易区分不同信息</p>
+                </li>
+                <li class="command-item">
+                    <strong>设置默认分支名</strong>
+                    <code class="command-code">git config --global init.defaultBranch main</code>
+                    <p class="command-desc">新建仓库时默认分支名设为 main（替代旧的 master）</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
